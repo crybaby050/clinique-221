@@ -88,7 +88,57 @@
             <!-- titre -->
             <p class="font-bold p-3 md:text-xl md:font-black">LISTES</p>
             <!--Filtre et bouton de demande de nouveau rendez-vous-->
-
+            <p class="font-bold p-2 md:text-lg md:font-bold">Filtre</p>
+            <div class="w-full p-2 flex flex-col gap-3 text-xs font-bold">
+                <div>
+                    <div class="relative inline-block">
+                        <!-- Icône calendrier à gauche -->
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-calendar text-white"></i>
+                        </div>
+                        <!-- Select -->
+                        <select
+                            class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
+                            focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
+                            <option value="">Date</option>
+                        </select>
+                        <!-- La flèche par défaut de select reste à droite -->
+                    </div>
+                    <div class="relative inline-block">
+                        <!-- Icône calendrier à gauche -->
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-filter  text-white"></i>
+                        </div>
+                        <!-- Select -->
+                        <select
+                            class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
+                            focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
+                            <option value="">Statut</option>
+                        </select>
+                        <!-- La flèche par défaut de select reste à droite -->
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button class="p-2 rounded-md bg-[rgba(70,201,187,1)] text-white flex items-center gap-2"><i class="fas fa-plus"></i>Nouveau rendez-vous</button>
+                </div>
+            </div>
+            <p class="font-bold p-2 md:text-lg md:font-bold">Liste des rendez-vous</p>
+            <div class="p-3 flex flex-col gap-2 text-xs">
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                        <span class="font-bold">DR THIAM</span>
+                    </div>
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span>
+                        <button class="p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600"><i class="fas fa-trash"></i>Annuler</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
