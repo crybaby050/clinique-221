@@ -12,14 +12,13 @@
 <body>
 
     <div class="bg-gray-50 md:border-blue-900 md:flex">
-
+<!--DEBUT DE LA SIDEBAR-->
         <!-- Barre du haut et side bar de la version desktop -->
         <div id="sidebar" class="sidebar w-full flex h-9  bg-[rgba(70,201,187,1)] text-white font-bold md:w-[250px] 
             md:h-[100vh] md:flex md:flex-col md:justify-start md:items-start md:rounded-tr-[18px]  
             transition-all duration-500">
             <!-- Icône menu -->
-            <div id="menuBtn"
-                class="h-full w-1/10 flex md:flex-col-reverse md:mb-5 justify-center 
+            <div id="menuBtn" class="h-full w-1/10 flex md:flex-col-reverse md:mb-5 justify-center 
                 items-center text-white cursor-pointer md:h-25 md:w-full">
                 <!-- image de ma marque -->
                 <div class="hidden md:block md:h-full md:w-full md:flex md:justify-center md:items-center">
@@ -32,16 +31,20 @@
             <!-- menu de la versin desktop -->
             <div id="listes" class="hidden md:block md:w-full md:h-full md:flex md:flex-col md:justify-between">
                 <ul class="flex flex-col p-2 space-y-2">
-                    <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+                    <a href="dashboard.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
             hover:bg-white hover:text-[rgba(70,201,187,1)]">
-                        <i class="fas fa-home"></i>
-                        <span class="text">Dashboard</span>
-                    </li>
-                    <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+                            <i class="fas fa-home"></i>
+                            <span class="text">Dashboard</span>
+                        </li>
+                    </a>
+                    <a href="liste.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
             hover:bg-white hover:text-[rgba(70,201,187,1)]">
-                        <i class="fas fa-list"></i>
-                        <span class="text">Rendez-vous</span>
-                    </li>
+                            <i class="fas fa-list"></i>
+                            <span class="text">Rendez-vous</span>
+                        </li>
+                    </a>
                 </ul>
                 <ul class="flex flex-col p-2 space-y-2">
                     <a href="sign.html">
@@ -59,14 +62,18 @@
             class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 md:hidden">
 
             <ul class="flex flex-col p-2 space-y-2">
-                <li
-                    class="h-6 text-[12px] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
-                    <i class="fas fa-home"></i>Dashboard
-                </li>
-                <li
-                    class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
-                    <i class="fas fa-list"></i>Rendez-vous
-                </li>
+                <a href="dashboard.html">
+                    <li
+                        class="h-6 text-[12px] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-home"></i>Dashboard
+                    </li>
+                </a>
+                <a href="liste.html">
+                    <li
+                        class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-list"></i>Rendez-vous
+                    </li>
+                </a>
                 <a href="sign.html">
                     <li
                         class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-red-600 text-white font-bold flex items-center gap-2">
@@ -75,7 +82,7 @@
                 </a>
             </ul>
         </div>
-<!--FIN DE LA SIDEBAR-->
+        <!--FIN DE LA SIDEBAR-->
 
         <div id="mainContent" class="md:flex-1 md:transition-all md:duration-500 md:border-red-900">
             <!-- titre -->
