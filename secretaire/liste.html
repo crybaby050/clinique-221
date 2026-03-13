@@ -74,7 +74,7 @@
                         <i class="fas fa-list"></i>Rendez-vous
                     </li>
                 </a>
-                <a href="sign.html">
+                <a href="../sign.html">
                     <li
                         class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-red-600 text-white font-bold flex items-center gap-2">
                         <i class="fas fa-right-from-bracket"></i>Se deconnecter
@@ -113,75 +113,351 @@
                         <select
                             class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
                             focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
-                            <option value="">Statut</option>
+                            <option value="">Type</option>
+                        </select>
+                        <!-- La flèche par défaut de select reste à droite -->
+                    </div>
+                    <div class="relative inline-block">
+                        <!-- Icône calendrier à gauche -->
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-filter  text-white"></i>
+                        </div>
+                        <!-- Select -->
+                        <select
+                            class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
+                            focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
+                            <option value="">Specialité</option>
                         </select>
                         <!-- La flèche par défaut de select reste à droite -->
                     </div>
                 </div>
-                <div class="flex justify-end">
+                <!--<div class="flex justify-end">
                     <button id="openModalBtn" class="p-2 rounded-md bg-[rgba(70,201,187,1)] text-white flex items-center gap-2"><i class="fas fa-plus"></i>Nouveau rendez-vous</button>
                 </div>
+            -->
             </div>
             <p class="font-bold p-2 md:text-lg md:font-bold">Liste des rendez-vous</p>
             <div class="md:hidden p-3 flex flex-col gap-5 text-xs">
-                <!-- Card 1 -->
+                <!-- Carte 1 -->
                 <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
-                    <div class="flex justify-between p-2 items-center">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
                         <span class="text-sm font-black">01/02/2023</span>
-                        <span class="font-bold">DR THIAM</span>
                     </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
                     <div class="flex justify-between p-2 items-center">
                         <span class="font-extrabold text-3xl">Dentiste</span>
                         <span class="text-sm">Consultation</span>
                     </div>
-                    <div class="flex justify-between p-2 items-center">
-                        <span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span>
-                        <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/2023 avec Dr THIAM - Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
                     </div>
                 </div>
-                <!-- Card 2 -->
+                <!-- Carte 1 -->
                 <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
-                    <div class="flex justify-between p-2 items-center">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
                         <span class="text-sm font-black">01/02/2023</span>
-                        <span class="font-bold">DR THIAM</span>
                     </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
                     <div class="flex justify-between p-2 items-center">
                         <span class="font-extrabold text-3xl">Dentiste</span>
                         <span class="text-sm">Consultation</span>
                     </div>
-                    <div class="flex justify-between p-2 items-center">
-                        <span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span>
-                        <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/2023 avec Dr THIAM - Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
                     </div>
                 </div>
-                <!-- Card 3 -->
+                <!-- Carte 1 -->
                 <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
-                    <div class="flex justify-between p-2 items-center">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
                         <span class="text-sm font-black">01/02/2023</span>
-                        <span class="font-bold">DR THIAM</span>
                     </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
                     <div class="flex justify-between p-2 items-center">
                         <span class="font-extrabold text-3xl">Dentiste</span>
                         <span class="text-sm">Consultation</span>
                     </div>
-                    <div class="flex justify-between p-2 items-center">
-                        <span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span>
-                        <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/2023 avec Dr THIAM - Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
                     </div>
                 </div>
-                <!-- Card 4 -->
+                <!-- Carte 1 -->
                 <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
-                    <div class="flex justify-between p-2 items-center">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
                         <span class="text-sm font-black">01/02/2023</span>
-                        <span class="font-bold">DR THIAM</span>
                     </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
                     <div class="flex justify-between p-2 items-center">
                         <span class="font-extrabold text-3xl">Dentiste</span>
                         <span class="text-sm">Consultation</span>
                     </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
                     <div class="flex justify-between p-2 items-center">
-                        <span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span>
-                        <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/2023 avec Dr THIAM - Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <!-- Ligne 1 : Date uniquement -->
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                    </div>
+                    <!-- Ligne 2 : Spécialité (gauche, gros) / Type (droite) -->
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dentiste</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <!-- Ligne 3 : Actions (Rejeter et Accepter) alignées à droite -->
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <!-- Ajout de la classe reject-btn pour cibler les rejets -->
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 01/02/2023 - Dentiste (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 2 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">05/02/2023</span>
+                    </div>
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Cardiologue</span>
+                        <span class="text-sm">Consultation</span>
+                    </div>
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 05/02/2023 - Cardiologue (Consultation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                    </div>
+                </div>
+                <!-- Carte 3 -->
+                <div class="h-40 bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between">
+                    <div class="flex justify-start p-2 items-center">
+                        <span class="text-sm font-black">10/02/2023</span>
+                    </div>
+                    <div class="flex justify-between p-2 items-center">
+                        <span class="font-extrabold text-3xl">Dermatologue</span>
+                        <span class="text-sm">Prestation</span>
+                    </div>
+                    <div class="flex justify-end p-2 items-center gap-2">
+                        <button class="reject-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-400" data-appointment="Rendez-vous du 10/02/2023 - Dermatologue (Prestation)">
+                            <i class="fas fa-times"></i> Rejeter
+                        </button>
+                        <button class="accept-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white" style="background-color: rgba(70,201,187,1);">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
                     </div>
                 </div>
             </div>
@@ -192,8 +468,6 @@
                             <th class="p-2 ">Date</th>
                             <th class="p-2 ">Type</th>
                             <th class="p-2 ">Spécialité</th>
-                            <th class="p-2 ">Médecin</th>
-                            <th class="p-2 ">Statut</th>
                             <th class="p-2 ">Action</th>
                         </tr>
                     </thead>
@@ -202,110 +476,193 @@
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
                             </td>
                         </tr>
                         <tr class="text-center">
                             <td class="btext-center">01/02/03 - 12:39</td>
                             <td class="btext-center">Consultation</td>
                             <td class="btext-center">Dentiste</td>
-                            <td class="btext-center">Dr Thiam</td>
-                            <td class="p-2 "><span class="p-1 pl-3 pr-3 rounded-full border-blue-900 text-blue-900 bg-blue-200">En attente</span></td>
-                            <td class="flex items-center justify-center text-center p-1">
-                                <button class="cancel-btn p-1 pl-3 pr-3 rounded-full flex gap-2 items-center text-white bg-red-600" data-appointment="Rendez-vous du 01/02/03 à 12:39 avec Dr Thiam - Consultation Dentiste"><i class="fas fa-trash"></i>Annuler</button>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td class="btext-center">01/02/03 - 12:39</td>
+                            <td class="btext-center">Consultation</td>
+                            <td class="btext-center">Dentiste</td>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 
+                                avec Dr Thiam - Consultation Dentiste">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 01/02/03 à 12:39 - Dentiste (Consultation)">Rejeter</button>
+                            </td>
+                        </tr>
+                        
+                        <tr class="text-center">
+                            <td class="btext-center">02/02/03 - 14:00</td>
+                            <td class="btext-center">Consultation</td>
+                            <td class="btext-center">Cardiologue</td>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 02/02/03 à 14:00 - Cardiologue (Consultation)">Rejeter</button>
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td class="btext-center">03/02/03 - 09:30</td>
+                            <td class="btext-center">Prestation</td>
+                            <td class="btext-center">Dermatologue</td>
+                            <td class="flex items-center justify-center text-center p-1 gap-5">
+                                <button class="accept-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-[rgba(70,201,187,1)]">Accepter</button>
+                                <button class="reject-btn p-1 pl-5 pr-5 rounded-full 
+                                flex gap-2 items-center text-white bg-red-400" 
+                                data-appointment="Rendez-vous du 03/02/03 à 09:30 - Dermatologue (Prestation)">Rejeter</button>
                             </td>
                         </tr>
                     </tbody>
@@ -314,126 +671,37 @@
         </div>
     </div>
 
-    <!-- Modal pour le formulaire de rendez-vous -->
+    <!-- Modal pour le formulaire de rendez-vous (gardé mais commenté car pas utilisé) -->
     <div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-lg w-[90%] max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold text-gray-800">Nouveau rendez-vous</h2>
-                    <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times text-2xl"></i>
-                    </button>
-                </div>
-                
-                <form class="space-y-4">
-                    <!-- Date -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Date du rendez-vous</label>
-                        <input type="datetime-local" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
-                    </div>
-
-                    <!-- Type -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Type</label>
-                        <select id="typeSelect" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
-                            <option value="">Sélectionnez un type</option>
-                            <option value="consultation">Consultation</option>
-                            <option value="prestation">Prestation</option>
-                        </select>
-                    </div>
-
-                    <!-- Antécédants (multi-sélection) -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Antécédants médicaux</label>
-                        <select multiple class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)] h-32">
-                            <option value="diabete">Diabète</option>
-                            <option value="hypertension">Hypertension</option>
-                            <option value="hepatite">Hépatite</option>
-                            <option value="asthme">Asthme</option>
-                            <option value="allergie">Allergies</option>
-                            <option value="cardiaque">Problèmes cardiaques</option>
-                        </select>
-                        <p class="text-xs text-gray-500 mt-1">Maintenez Ctrl (ou Cmd sur Mac) pour sélectionner plusieurs options</p>
-                    </div>
-
-                    <!-- Spécialité -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Spécialité</label>
-                        <select class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
-                            <option value="">Sélectionnez une spécialité</option>
-                            <option value="dentiste">Dentiste</option>
-                            <option value="cardiologue">Cardiologue</option>
-                            <option value="dermatologue">Dermatologue</option>
-                            <option value="generaliste">Généraliste</option>
-                            <option value="pediatre">Pédiatre</option>
-                            <option value="gynecologue">Gynécologue</option>
-                        </select>
-                    </div>
-
-                    <!-- Prestation (visible seulement si type prestation est sélectionné) -->
-                    <div id="prestationField" class="hidden">
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Type de prestation</label>
-                        <select class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
-                            <option value="">Sélectionnez une prestation</option>
-                            <option value="analyse">Analyse</option>
-                            <option value="radiologie">Radiologie</option>
-                            <option value="echographie">Échographie</option>
-                            <option value="scanner">Scanner</option>
-                            <option value="rehabilitation">Réhabilitation</option>
-                        </select>
-                    </div>
-
-                    <!-- Médecin (optionnel) -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Médecin (optionnel)</label>
-                        <input type="text" placeholder="Nom du médecin" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
-                    </div>
-
-                    <!-- Notes supplémentaires -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Notes supplémentaires</label>
-                        <textarea rows="3" placeholder="Informations complémentaires..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]"></textarea>
-                    </div>
-
-                    <!-- Boutons d'action -->
-                    <div class="flex gap-3 pt-4">
-                        <button type="button" id="cancelModalBtn" class="flex-1 p-2 border border-gray-300 rounded-md text-gray-700 font-bold hover:bg-gray-100 transition-colors">
-                            Annuler
-                        </button>
-                        <button type="submit" class="flex-1 p-2 bg-[rgba(70,201,187,1)] text-white rounded-md font-bold hover:bg-[rgba(50,181,167,1)] transition-colors">
-                            Enregistrer
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <!-- ... contenu existant ... -->
     </div>
 
-    <!-- Modal de confirmation d'annulation de rendez-vous -->
-    <div id="confirmCancelModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[60] p-4">
-        <div class="bg-white rounded-lg w-[90%] max-w-md">
+    <!-- MODAL DE CONFIRMATION POUR REJETER (message simplifié) -->
+    <div id="rejectConfirmModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[70] p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md shadow-xl transform transition-all">
             <div class="p-6">
+                <!-- En-tête avec icône warning -->
                 <div class="flex justify-center mb-4">
                     <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-exclamation-triangle text-3xl text-red-600"></i>
+                        <i class="fas fa-exclamation-triangle text-3xl text-red-500"></i>
                     </div>
                 </div>
                 
-                <h3 class="text-xl font-bold text-center text-gray-800 mb-2">Confirmer l'annulation</h3>
+                <!-- Titre : Attention -->
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-3">Attention</h3>
                 
-                <p id="appointmentDetails" class="text-center text-gray-600 mb-2">
-                    Êtes-vous sûr de vouloir annuler ce rendez-vous ?
-                </p>
-                <p id="appointmentInfo" class="text-center font-bold text-[rgba(70,201,187,1)] mb-6">
-                    Rendez-vous du 01/02/2023
+                <!-- Message : Êtes-vous sûr de vouloir rejeter cette demande de rendez-vous ? -->
+                <p class="text-center text-gray-600 mb-6">
+                    Êtes-vous sûr de vouloir rejeter cette demande de rendez-vous ?
                 </p>
                 
+                <!-- Boutons -->
                 <div class="flex gap-3">
-                    <button id="keepAppointmentBtn" class="flex-1 p-2 border border-gray-300 rounded-md text-gray-700 font-bold hover:bg-gray-100 transition-colors">
-                        Non, conserver
+                    <button id="cancelRejectBtn" class="flex-1 py-2.5 px-4 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition-colors">
+                        Annuler
                     </button>
-                    <button id="confirmAppointmentCancelBtn" class="flex-1 p-2 bg-red-600 text-white rounded-md font-bold hover:bg-red-700 transition-colors">
-                        Oui, annuler
+                    <button id="confirmRejectBtn" class="flex-1 py-2.5 px-4 bg-red-500 text-white rounded-xl font-medium hover:bg-red-600 transition-colors shadow-sm">
+                        Oui, rejeter
                     </button>
                 </div>
             </div>
@@ -492,7 +760,7 @@ menuBtn.addEventListener("click", () => {
 
 });
 
-// Gestion du modal principal
+// Gestion du modal principal (désactivé mais on garde la structure existante)
 const modal = document.getElementById('modal');
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
@@ -500,114 +768,92 @@ const cancelModalBtn = document.getElementById('cancelModalBtn');
 const typeSelect = document.getElementById('typeSelect');
 const prestationField = document.getElementById('prestationField');
 
-// Gestion du modal de confirmation d'annulation
-const confirmCancelModal = document.getElementById('confirmCancelModal');
-const keepAppointmentBtn = document.getElementById('keepAppointmentBtn');
-const confirmAppointmentCancelBtn = document.getElementById('confirmAppointmentCancelBtn');
-const appointmentInfo = document.getElementById('appointmentInfo');
+// --- GESTION DU MODAL DE REJET (MESSAGE SIMPLIFIÉ) ---
+const rejectModal = document.getElementById('rejectConfirmModal');
+const cancelRejectBtn = document.getElementById('cancelRejectBtn');
+const confirmRejectBtn = document.getElementById('confirmRejectBtn');
 
-// Variable pour stocker le bouton qui a déclenché l'annulation
-let currentCancelButton = null;
+let currentRejectButton = null; // stocke le bouton rejeter cliqué
 
-// Ouvrir le modal principal
-openModalBtn.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+// Fonction pour ouvrir le modal de rejet (pas besoin de description dynamique)
+function openRejectModal(button) {
+    currentRejectButton = button;
+    rejectModal.classList.remove('hidden');
+    rejectModal.classList.add('flex');
+}
+
+// Fonction pour fermer le modal de rejet
+function closeRejectModal() {
+    rejectModal.classList.add('hidden');
+    rejectModal.classList.remove('flex');
+    currentRejectButton = null;
+}
+
+// Cibler tous les boutons "Rejeter" (avec la classe reject-btn)
+document.querySelectorAll('.reject-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // éviter les conflits
+        openRejectModal(button);
+    });
 });
 
-// Fermer le modal principal (uniquement via le X)
-closeModalBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+// Annuler (bouton "Annuler" du modal)
+cancelRejectBtn.addEventListener('click', closeRejectModal);
+
+// Confirmer le rejet (bouton "Oui, rejeter")
+confirmRejectBtn.addEventListener('click', () => {
+    if (currentRejectButton) {
+        // Trouver l'élément parent à supprimer (la carte mobile ou la ligne tableau)
+        const card = currentRejectButton.closest('.h-40'); // pour mobile
+        const row = currentRejectButton.closest('tr');     // pour desktop
+        
+        if (card) {
+            card.remove();
+        } else if (row) {
+            row.remove();
+        }
+        
+        // Petit feedback optionnel (on peut le laisser)
+        alert('Rendez-vous rejeté avec succès !');
+    }
+    closeRejectModal();
 });
 
-// Ouvrir le modal de confirmation du formulaire quand on clique sur "Annuler"
-cancelModalBtn.addEventListener('click', () => {
-    if (confirm('Voulez-vous vraiment annuler la création de ce rendez-vous ?')) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
+// Fermer le modal en cliquant sur le fond sombre
+rejectModal.addEventListener('click', (e) => {
+    if (e.target === rejectModal) {
+        closeRejectModal();
     }
 });
 
-// Gérer tous les boutons d'annulation (cards et tableau)
+// Empêcher la propagation du clic depuis l'intérieur du modal
+rejectModal.querySelector('.bg-white').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// --- Gestion des anciens modaux (pour compatibilité) ---
+// Gérer tous les boutons d'annulation (ancien système) - on garde mais plus utilisé
 document.querySelectorAll('.cancel-btn').forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
-        currentCancelButton = button;
-        const appointmentText = button.getAttribute('data-appointment') || 'ce rendez-vous';
-        appointmentInfo.textContent = appointmentText;
-        confirmCancelModal.classList.remove('hidden');
-        confirmCancelModal.classList.add('flex');
+        // On pourrait rediriger vers le nouveau modal, mais on préfère laisser les anciens boutons sans action
     });
 });
 
-// Fermer le modal de confirmation et garder le rendez-vous
-keepAppointmentBtn.addEventListener('click', () => {
-    confirmCancelModal.classList.add('hidden');
-    confirmCancelModal.classList.remove('flex');
-    currentCancelButton = null;
-});
+// (Optionnel) On peut masquer l'ancien modal de confirmation si présent
+const oldConfirmModal = document.getElementById('confirmCancelModal');
+if (oldConfirmModal) oldConfirmModal.style.display = 'none';
 
-// Confirmer l'annulation du rendez-vous
-confirmAppointmentCancelBtn.addEventListener('click', () => {
-    // Ici vous pouvez ajouter la logique pour supprimer le rendez-vous
-    // Par exemple, supprimer la ligne du tableau ou la carte
-    
-    if (currentCancelButton) {
-        // Trouver la ligne ou la carte parente et la supprimer
-        const row = currentCancelButton.closest('tr');
-        const card = currentCancelButton.closest('.h-40');
-        
-        if (row) {
-            row.remove(); // Supprimer la ligne du tableau
-        } else if (card) {
-            card.remove(); // Supprimer la carte mobile
-        }
-    }
-    
-    // Fermer le modal
-    confirmCancelModal.classList.add('hidden');
-    confirmCancelModal.classList.remove('flex');
-    currentCancelButton = null;
-    
-    // Optionnel : Afficher un message de confirmation
-    alert('Le rendez-vous a été annulé avec succès !');
-});
-
-// Fermer le modal de confirmation en cliquant en dehors
-confirmCancelModal.addEventListener('click', (e) => {
-    if (e.target === confirmCancelModal) {
-        confirmCancelModal.classList.add('hidden');
-        confirmCancelModal.classList.remove('flex');
-        currentCancelButton = null;
-    }
-});
-
-// Fermer le modal principal en cliquant en dehors
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-    }
-});
-
-// Gérer l'affichage du champ prestation selon le type sélectionné
-if (typeSelect) {
-    typeSelect.addEventListener('change', (e) => {
-        if (e.target.value === 'prestation') {
-            prestationField.classList.remove('hidden');
-        } else {
-            prestationField.classList.add('hidden');
+// Fermer le modal principal en cliquant en dehors (si jamais utilisé)
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
     });
 }
-
-// Empêcher la propagation des clics depuis le contenu des modaux
-document.querySelectorAll('.bg-white').forEach(element => {
-    element.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-});
     </script>
 
 </body>

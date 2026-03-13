@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="bg-gray-50 md:border-blue-900 md:flex">
+<!--DEBUT DE LA SIDEBAR-->
+        <!-- Barre du haut et side bar de la version desktop -->
+        <div id="sidebar" class="sidebar w-full flex h-9  bg-[rgba(70,201,187,1)] text-white font-bold md:w-[250px] 
+            md:h-[100vh] md:flex md:flex-col md:justify-start md:items-start md:rounded-tr-[18px]  
+            transition-all duration-500">
+            <!-- Icône menu -->
+            <div id="menuBtn" class="h-full w-1/10 flex md:flex-col-reverse md:mb-5 justify-center 
+                items-center text-white cursor-pointer md:h-25 md:w-full">
+                <!-- image de ma marque -->
+                <div class="hidden md:block md:h-full md:w-full md:flex md:justify-center md:items-center">
+                    <div id="logo"
+                        class="md:h-18 md:mb-5 md:w-18 md:rounded-full md:bg-[url('/image/logo.jpg')] md:bg-cover md:bg-center">
+                    </div>
+                </div>
+                <i class="fas fa-bars ml-auto md:ml-0 md:mt-0 md:self-end md:p-5 md:mt-5" id="toggle"></i>
+            </div>
+            <!-- menu de la versin desktop -->
+            <div id="listes" class="hidden md:block md:w-full md:h-full md:flex md:flex-col md:justify-between">
+                <ul class="flex flex-col p-2 space-y-2">
+                    <a href="dashboard.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+            hover:bg-white hover:text-[rgba(70,201,187,1)]">
+                            <i class="fas fa-home"></i>
+                            <span class="text">Dashboard</span>
+                        </li>
+                    </a>
+                    <a href="liste.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+            hover:bg-white hover:text-[rgba(70,201,187,1)]">
+                            <i class="fas fa-list"></i>
+                            <span class="text">Rendez-vous</span>
+                        </li>
+                    </a>
+                </ul>
+                <ul class="flex flex-col p-2 space-y-2">
+                    <a href="sign.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+                hover:bg-red-600 hover:text-white">
+                            <i class="fas fa-right-from-bracket"></i>
+                            <span class="text">Se deconnecter</span>
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobileMenu"
+            class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 md:hidden">
+
+            <ul class="flex flex-col p-2 space-y-2">
+                <a href="dashboard.html">
+                    <li
+                        class="h-6 text-[12px] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-home"></i>Dashboard
+                    </li>
+                </a>
+                <a href="liste.html">
+                    <li
+                        class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-list"></i>Rendez-vous
+                    </li>
+                </a>
+                <a href="sign.html">
+                    <li
+                        class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-red-600 text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-right-from-bracket"></i>Se deconnecter
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <!--FIN DE LA SIDEBAR-->
+
+        <div id="mainContent" class="md:flex-1 md:transition-all md:duration-500 md:border-red-900">
+            <!-- titre -->
+            <p class="font-bold p-3 md:text-xl md:font-black">DASHBOARD</p>
+            <!-- les cards -->
+            <div class="theCard flex flex-col p-3 items-center justify-center gap-5 md:grid md:grid-cols-3">
+                <!-- cards pour les rendez-vous valider -->
+                <div
+                    class="card h-30 mt-2 w-[95%] rounded-xl shadow-[0_10px_20px_rgba(34,197,94,0.18)] border-b-4 border-green-500 flex">
+                    <div class="right w-3/5 p-3 flex flex-col">
+                        <p class="font-semibold text-[14px]">Rendez-vous valider</p>
+                        <p class="font-black text-[32px] text-green-500 mt-5">12</p>
+                    </div>
+                    <div class="left w-2/5 flex justify-center items-center">
+                        <div
+                            class=" border-green-50 rounded-full h-10 w-10 shadow-[0_10px_25px_rgba(34,197,94,0.18)] flex items-center justify-center">
+                            <i class="fas fa-calendar-check text-green-500"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- cards pour les rendez-vous en attentes -->
+                <div
+                    class="card h-30 mt-2 w-[95%] rounded-xl border-[rgba(59,130,246,1)] shadow-[0_10px_25px_rgba(59,130,246,0.15)] border-b-4 flex">
+                    <div class="right w-3/5 p-3 flex flex-col">
+                        <p class="font-semibold text-[14px]">Rendez-vous en attente</p>
+                        <p class="font-black text-[32px] text-blue-500 mt-2">12</p>
+                    </div>
+                    <div class="left w-2/5 flex justify-center items-center">
+                        <div
+                            class=" border-green-50 rounded-full h-10 w-10 shadow-[0_10px_25px_rgba(34,197,94,0.18)] flex items-center justify-center">
+                            <i class="fas fa-clock text-[rgba(59,130,246,1)]"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- cards pour les rendez-vous refusé -->
+                <div
+                    class="card h-30 mt-2 w-[95%] rounded-xl border-[rgba(239,68,68,1)] shadow-[0_10px_25px_rgba(239,68,68,0.15)] border-b-4 flex">
+                    <div class="right w-3/5 p-3 flex flex-col">
+                        <p class="font-semibold text-[14px]">Rendez-vous refusé</p>
+                        <p class="font-black text-[32px] text-red-500 mt-5">12</p>
+                    </div>
+                    <div class="left w-2/5 flex justify-center items-center">
+                        <div
+                            class=" border-green-50 rounded-full h-10 w-10 shadow-[0_10px_25px_rgba(34,197,94,0.18)] flex items-center justify-center">
+                            <i class="fas fa-calendar-xmark text-[rgba(239,68,68,1)]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const texts = document.querySelectorAll(".text");
+        const logo = document.getElementById("logo");
+        const menuItems = document.querySelectorAll(".menu-item"); // pour centrer les li
+
+        menuBtn.addEventListener("click", () => {
+
+    if (window.innerWidth < 768) { // MOBILE
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (mobileMenu.style.maxHeight) {
+            mobileMenu.style.maxHeight = null;
+        } else {
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        }
+
+    } else { // DESKTOP
+        sidebar.classList.toggle("md:w-[250px]");
+        sidebar.classList.toggle("md:w-[80px]");
+
+        if (sidebar.classList.contains("md:w-[80px]")) {
+            // cacher texte
+            texts.forEach(text => text.style.display = "none");
+            // réduire logo
+            logo.classList.remove("md:h-18", "md:w-18");
+            logo.classList.add("md:h-10", "md:w-10");
+            // centrer les icônes
+            menuItems.forEach(item => item.style.justifyContent = "center");
+        } else {
+            texts.forEach(text => text.style.display = "inline");
+            logo.classList.remove("md:h-10", "md:w-10");
+            logo.classList.add("md:h-18", "md:w-18");
+            menuItems.forEach(item => item.style.justifyContent = "flex-start");
+        }
+    }
+
+});
+    </script>
+
+</body>
+
+</html>

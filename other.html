@@ -1,0 +1,119 @@
+
+            <!-- VERSION MOBILE : CARTES avec date, prénom, nom, statut, acte -->
+            <div class="md:hidden p-3 flex flex-col gap-5 text-xs">
+                <!-- Carte 1 -->
+                <div class="h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                        <span class="font-bold">Jean Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Jean</span>
+                        <span class="text-xs text-gray-600">Nom: Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <!-- Statut avec couleurs -->
+                        <span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span>
+                        <!-- Acte : 3 icônes avec couleurs -->
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 2 -->
+                <div class="h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">03/02/2023</span>
+                        <span class="font-bold">Marie Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Marie</span>
+                        <span class="text-xs text-gray-600">Nom: Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 3 -->
+                <div class="h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">05/02/2023</span>
+                        <span class="font-bold">Pierre Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Pierre</span>
+                        <span class="text-xs text-gray-600">Nom: Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VERSION DESKTOP : TABLEAU avec date, prénom, nom, statut, acte -->
+            <div class="table md:p-2 hidden md:block">
+                <table class="w-full bg-white">
+                    <thead class="bg-[rgba(70,201,187,1)] text-white rounded-tr-xl rounded-tl-xl">
+                        <tr>
+                            <th class="p-2">Date</th>
+                            <th class="p-2">Prénom</th>
+                            <th class="p-2">Nom</th>
+                            <th class="p-2">Statut</th>
+                            <th class="p-2">Acte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center border-b">
+                            <td class="p-2">01/02/2023</td>
+                            <td class="p-2">Jean</td>
+                            <td class="p-2">Dupont</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-b">
+                            <td class="p-2">03/02/2023</td>
+                            <td class="p-2">Marie</td>
+                            <td class="p-2">Martin</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-b">
+                            <td class="p-2">05/02/2023</td>
+                            <td class="p-2">Pierre</td>
+                            <td class="p-2">Durand</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>

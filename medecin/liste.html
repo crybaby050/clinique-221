@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Document</title>
+    <style>
+        /* Hover gris clair pour les lignes du tableau */
+        tbody tr:hover {
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        /* Hover gris clair pour les cartes */
+        .card-hover:hover {
+            background-color: #f9fafb; /* gray-50 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gray-50 md:border-blue-900 md:flex">
+        <!--DEBUT DE LA SIDEBAR-->
+        <!-- Barre du haut et side bar de la version desktop -->
+        <div id="sidebar" class="fixed sidebar w-full flex h-9  bg-[rgba(70,201,187,1)] text-white font-bold md:w-[250px] 
+            md:h-[100vh] md:flex md:flex-col md:justify-start md:items-start md:rounded-tr-[18px]  
+            transition-all duration-500">
+            <!-- Icône menu -->
+            <div id="menuBtn" class="h-full w-1/10 flex md:flex-col-reverse md:mb-5 justify-center 
+                items-center text-white cursor-pointer md:h-25 md:w-full">
+                <!-- image de ma marque -->
+                <div class="hidden md:block md:h-full md:w-full md:flex md:justify-center md:items-center">
+                    <div id="logo"
+                        class="md:h-18 md:mb-5 md:w-18 md:rounded-full md:bg-[url('/image/logo.jpg')] md:bg-cover md:bg-center">
+                    </div>
+                </div>
+                <i class="fas fa-bars ml-auto md:ml-0 md:mt-0 md:self-end md:p-5 md:mt-5" id="toggle"></i>
+            </div>
+            <!-- menu de la versin desktop -->
+            <div id="listes" class="hidden md:block md:w-full md:h-full md:flex md:flex-col md:justify-between">
+                <ul class="flex flex-col p-2 space-y-2">
+                    <a href="dashboard.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+            hover:bg-white hover:text-[rgba(70,201,187,1)]">
+                            <i class="fas fa-home"></i>
+                            <span class="text">Dashboard</span>
+                        </li>
+                    </a>
+                    <a href="liste.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+            hover:bg-white hover:text-[rgba(70,201,187,1)]">
+                            <i class="fas fa-list"></i>
+                            <span class="text">Rendez-vous</span>
+                        </li>
+                    </a>
+                </ul>
+                <ul class="flex flex-col p-2 space-y-2">
+                    <a href="sign.html">
+                        <li class="menu-item h-7 flex items-center gap-2 pl-2 rounded
+                hover:bg-red-600 hover:text-white">
+                            <i class="fas fa-right-from-bracket"></i>
+                            <span class="text">Se deconnecter</span>
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobileMenu"
+            class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 md:hidden">
+
+            <ul class="flex flex-col p-2 space-y-2">
+                <a href="dashboard.html">
+                    <li
+                        class="h-6 text-[12px] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-home"></i>Dashboard
+                    </li>
+                </a>
+                <a href="liste.html">
+                    <li
+                        class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-[rgba(70,201,187,1)] text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-list"></i>Rendez-vous
+                    </li>
+                </a>
+                <a href="../sign.html">
+                    <li
+                        class="h-6 text-[12px] hover:bg-white hover:text-[rgba(70,201,187,1)] pl-2 rounded bg-red-600 text-white font-bold flex items-center gap-2">
+                        <i class="fas fa-right-from-bracket"></i>Se deconnecter
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <!--FIN DE LA SIDEBAR-->
+
+        <div id="mainContent" class="md:flex-1 md:transition-all md:duration-500 md:border-red-900">
+            <!-- titre -->
+            <p class="font-bold p-3 md:text-xl md:font-black">LISTES</p>
+            <!--Filtre et bouton de demande de nouveau rendez-vous-->
+            <p class="font-bold p-2 md:text-lg md:font-bold">Filtre</p>
+            <div class="w-full p-2 flex flex-col gap-3 text-xs font-bold">
+                <div>
+                    <div class="relative inline-block">
+                        <!-- Icône calendrier à gauche -->
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-calendar text-white"></i>
+                        </div>
+                        <!-- Select -->
+                        <select
+                            class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
+                            focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
+                            <option value="">Date</option>
+                        </select>
+                        <!-- La flèche par défaut de select reste à droite -->
+                    </div>
+                    <div class="relative inline-block">
+                        <!-- Icône calendrier à gauche -->
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-filter  text-white"></i>
+                        </div>
+                        <!-- Select -->
+                        <select
+                            class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
+                            focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
+                            <option value="">Type</option>
+                        </select>
+                        <!-- La flèche par défaut de select reste à droite -->
+                    </div>
+                    <div class="relative inline-block">
+                        <!-- Icône calendrier à gauche -->
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-filter  text-white"></i>
+                        </div>
+                        <!-- Select -->
+                        <select
+                            class="block pl-10 pr-4 py-2 border border-gray-300 rounded-md text-white 
+                            focus:outline-none focus:ring-2 focus:ring-blue-400 bg-[rgba(70,201,187,1)]">
+                            <option value="">Specialité</option>
+                        </select>
+                        <!-- La flèche par défaut de select reste à droite -->
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button id="openModalBtn" class="p-2 rounded-md bg-[rgba(70,201,187,1)] text-white flex items-center gap-2"><i class="fas fa-plus"></i>Nouveau rendez-vous</button>
+                </div>
+            </div>
+            <p class="font-bold p-2 md:text-lg md:font-bold">Liste des rendez-vous</p>
+            
+            <!-- VERSION MOBILE : CARTES avec date, prénom, nom, statut, acte -->
+            <div class="md:hidden p-3 flex flex-col gap-5 text-xs">
+                <!-- Carte 1 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                        <span class="font-bold">Jean Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Jean</span>
+                        <span class="text-xs text-gray-600">Nom: Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <!-- Statut avec couleurs -->
+                        <span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span>
+                        <!-- Acte : 3 icônes avec couleurs -->
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 2 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">03/02/2023</span>
+                        <span class="font-bold">Marie Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Marie</span>
+                        <span class="text-xs text-gray-600">Nom: Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 3 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">05/02/2023</span>
+                        <span class="font-bold">Pierre Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Pierre</span>
+                        <span class="text-xs text-gray-600">Nom: Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                        <span class="font-bold">Jean Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Jean</span>
+                        <span class="text-xs text-gray-600">Nom: Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <!-- Statut avec couleurs -->
+                        <span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span>
+                        <!-- Acte : 3 icônes avec couleurs -->
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 2 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">03/02/2023</span>
+                        <span class="font-bold">Marie Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Marie</span>
+                        <span class="text-xs text-gray-600">Nom: Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 3 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">05/02/2023</span>
+                        <span class="font-bold">Pierre Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Pierre</span>
+                        <span class="text-xs text-gray-600">Nom: Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 1 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">01/02/2023</span>
+                        <span class="font-bold">Jean Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Jean</span>
+                        <span class="text-xs text-gray-600">Nom: Dupont</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <!-- Statut avec couleurs -->
+                        <span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span>
+                        <!-- Acte : 3 icônes avec couleurs -->
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 2 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">03/02/2023</span>
+                        <span class="font-bold">Marie Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Marie</span>
+                        <span class="text-xs text-gray-600">Nom: Martin</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carte 3 -->
+                <div class="card-hover h-auto bg-white rounded-md border-b-4 border-[rgba(70,201,187,1)] flex flex-col justify-between p-3 gap-2 transition-colors">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-black">05/02/2023</span>
+                        <span class="font-bold">Pierre Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-600">Prénom: Pierre</span>
+                        <span class="text-xs text-gray-600">Nom: Durand</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span>
+                        <div class="flex gap-3">
+                            <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                            <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                            <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VERSION DESKTOP : TABLEAU avec date, prénom, nom, statut, acte -->
+            <div class="table md:p-2 hidden md:block">
+                <table class="w-full bg-white">
+                    <thead class="bg-[rgba(70,201,187,1)] text-white rounded-tr-xl rounded-tl-xl">
+                        <tr>
+                            <th class="p-2">Date</th>
+                            <th class="p-2">Prénom</th>
+                            <th class="p-2">Nom</th>
+                            <th class="p-2">Statut</th>
+                            <th class="p-2">Acte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">01/02/2023</td>
+                            <td class="p-2">Jean</td>
+                            <td class="p-2">Dupont</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">03/02/2023</td>
+                            <td class="p-2">Marie</td>
+                            <td class="p-2">Martin</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">05/02/2023</td>
+                            <td class="p-2">Pierre</td>
+                            <td class="p-2">Durand</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">01/02/2023</td>
+                            <td class="p-2">Jean</td>
+                            <td class="p-2">Dupont</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">03/02/2023</td>
+                            <td class="p-2">Marie</td>
+                            <td class="p-2">Martin</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">05/02/2023</td>
+                            <td class="p-2">Pierre</td>
+                            <td class="p-2">Durand</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">01/02/2023</td>
+                            <td class="p-2">Jean</td>
+                            <td class="p-2">Dupont</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-yellow-200 text-yellow-800">En cours</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">03/02/2023</td>
+                            <td class="p-2">Marie</td>
+                            <td class="p-2">Martin</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-green-200 text-green-800">Validé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center border-0 hover:bg-gray-100 transition-colors">
+                            <td class="p-2">05/02/2023</td>
+                            <td class="p-2">Pierre</td>
+                            <td class="p-2">Durand</td>
+                            <td class="p-2"><span class="px-3 py-1 rounded-full text-xs bg-red-200 text-red-800">Annulé</span></td>
+                            <td class="p-2">
+                                <div class="flex justify-center gap-4">
+                                    <i class="fas fa-eye text-blue-600 cursor-pointer hover:text-blue-800" title="Détail"></i>
+                                    <i class="fas fa-folder-open text-green-600 cursor-pointer hover:text-green-800" title="Dossier"></i>
+                                    <i class="fas fa-times-circle text-red-600 cursor-pointer hover:text-red-800 cancel-acte-btn" title="Annuler"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DU FORMULAIRE D'AJOUT DE RENDEZ-VOUS (réparé) -->
+    <div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg w-[90%] max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Nouveau rendez-vous</h2>
+                    <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                <form class="space-y-4">
+                    <!-- Date -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Date du rendez-vous</label>
+                        <input type="datetime-local" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
+                    </div>
+
+                    <!-- Type -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Type</label>
+                        <select id="typeSelect" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
+                            <option value="">Sélectionnez un type</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="prestation">Prestation</option>
+                        </select>
+                    </div>
+
+                    <!-- Antécédants (multi-sélection) -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Antécédants médicaux</label>
+                        <select multiple class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)] h-32">
+                            <option value="diabete">Diabète</option>
+                            <option value="hypertension">Hypertension</option>
+                            <option value="hepatite">Hépatite</option>
+                            <option value="asthme">Asthme</option>
+                            <option value="allergie">Allergies</option>
+                            <option value="cardiaque">Problèmes cardiaques</option>
+                        </select>
+                        <p class="text-xs text-gray-500 mt-1">Maintenez Ctrl (ou Cmd sur Mac) pour sélectionner plusieurs options</p>
+                    </div>
+
+                    <!-- Spécialité -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Spécialité</label>
+                        <select class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
+                            <option value="">Sélectionnez une spécialité</option>
+                            <option value="dentiste">Dentiste</option>
+                            <option value="cardiologue">Cardiologue</option>
+                            <option value="dermatologue">Dermatologue</option>
+                            <option value="generaliste">Généraliste</option>
+                            <option value="pediatre">Pédiatre</option>
+                            <option value="gynecologue">Gynécologue</option>
+                        </select>
+                    </div>
+
+                    <!-- Prestation (visible seulement si type prestation est sélectionné) -->
+                    <div id="prestationField" class="hidden">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Type de prestation</label>
+                        <select class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgba(70,201,187,1)]">
+                            <option value="">Sélectionnez une prestation</option>
+                            <option value="analyse">Analyse</option>
+                            <option value="radiologie">Radiologie</option>
+                            <option value="echographie">Échographie</option>
+                            <option value="scanner">Scanner</option>
+                            <option value="rehabilitation">Réhabilitation</option>
+                        </select>
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="flex gap-3 pt-4">
+                        <button type="button" id="cancelModalBtn" class="flex-1 p-2 border border-gray-300 rounded-md text-gray-700 font-bold hover:bg-gray-100 transition-colors">
+                            Annuler
+                        </button>
+                        <button type="submit" class="flex-1 p-2 bg-[rgba(70,201,187,1)] text-white rounded-md font-bold hover:bg-[rgba(50,181,167,1)] transition-colors">
+                            Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMATION POUR ANNULER L'ACTE (message simplifié, sans nom/date) -->
+    <div id="cancelActeModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[70] p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md shadow-xl transform transition-all">
+            <div class="p-6">
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-3xl text-red-500"></i>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-3">Attention</h3>
+                <p class="text-center text-gray-600 mb-6">
+                    Êtes-vous sûr de vouloir annuler ?
+                </p>
+                <div class="flex gap-3">
+                    <button id="cancelActeCloseBtn" class="flex-1 py-2.5 px-4 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition-colors">
+                        Non
+                    </button>
+                    <button id="confirmActeCancelBtn" class="flex-1 py-2.5 px-4 bg-red-500 text-white rounded-xl font-medium hover:bg-red-600 transition-colors shadow-sm">
+                        Oui
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMATION POUR REJETER (message simplifié) -->
+    <div id="rejectConfirmModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[70] p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md shadow-xl transform transition-all">
+            <div class="p-6">
+                <!-- En-tête avec icône warning -->
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-3xl text-red-500"></i>
+                    </div>
+                </div>
+                
+                <!-- Titre : Attention -->
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-3">Attention</h3>
+                
+                <!-- Message : Êtes-vous sûr de vouloir rejeter cette demande de rendez-vous ? -->
+                <p class="text-center text-gray-600 mb-6">
+                    Êtes-vous sûr de vouloir rejeter cette demande de rendez-vous ?
+                </p>
+                
+                <!-- Boutons -->
+                <div class="flex gap-3">
+                    <button id="cancelRejectBtn" class="flex-1 py-2.5 px-4 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-100 transition-colors">
+                        Annuler
+                    </button>
+                    <button id="confirmRejectBtn" class="flex-1 py-2.5 px-4 bg-red-500 text-white rounded-xl font-medium hover:bg-red-600 transition-colors shadow-sm">
+                        Oui, rejeter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const texts = document.querySelectorAll(".text");
+const logo = document.getElementById("logo");
+const menuItems = document.querySelectorAll(".menu-item");
+const mainContent = document.getElementById("mainContent");
+
+menuBtn.addEventListener("click", () => {
+
+    if (window.innerWidth < 768) { // MOBILE
+
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (mobileMenu.style.maxHeight) {
+            mobileMenu.style.maxHeight = null;
+        } else {
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        }
+
+        return; // IMPORTANT : on arrête ici pour le mobile
+    }
+
+    // DESKTOP
+    sidebar.classList.toggle("md:w-[250px]");
+    sidebar.classList.toggle("md:w-[80px]");
+
+    if (sidebar.classList.contains("md:w-[80px]")) {
+
+        texts.forEach(text => text.style.display = "none");
+
+        logo.classList.remove("md:h-18", "md:w-18");
+        logo.classList.add("md:h-10", "md:w-10");
+
+        menuItems.forEach(item => item.style.justifyContent = "center");
+
+        mainContent.style.marginLeft = "80px";
+
+    } else {
+
+        texts.forEach(text => text.style.display = "inline");
+
+        logo.classList.remove("md:h-10", "md:w-10");
+        logo.classList.add("md:h-18", "md:w-18");
+
+        menuItems.forEach(item => item.style.justifyContent = "flex-start");
+
+        mainContent.style.marginLeft = "250px";
+    }
+
+});
+
+// Gestion du modal d'ajout de rendez-vous
+const modal = document.getElementById('modal');
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const cancelModalBtn = document.getElementById('cancelModalBtn');
+const typeSelect = document.getElementById('typeSelect');
+const prestationField = document.getElementById('prestationField');
+
+// Ouvrir le modal
+openModalBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+});
+
+// Fermer le modal (bouton X)
+closeModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+});
+
+// Fermer le modal (bouton Annuler du formulaire)
+cancelModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+});
+
+// Fermer le modal en cliquant en dehors
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+});
+
+// Afficher/masquer le champ prestation selon le type sélectionné
+typeSelect.addEventListener('change', (e) => {
+    if (e.target.value === 'prestation') {
+        prestationField.classList.remove('hidden');
+    } else {
+        prestationField.classList.add('hidden');
+    }
+});
+
+// --- GESTION DU MODAL D'ANNULATION D'ACTE (message simplifié) ---
+const cancelActeModal = document.getElementById('cancelActeModal');
+const cancelActeCloseBtn = document.getElementById('cancelActeCloseBtn');
+const confirmActeCancelBtn = document.getElementById('confirmActeCancelBtn');
+
+let currentActeButton = null;
+
+// Ouvrir le modal d'annulation d'acte
+document.querySelectorAll('.cancel-acte-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        currentActeButton = btn;
+        cancelActeModal.classList.remove('hidden');
+        cancelActeModal.classList.add('flex');
+    });
+});
+
+// Fermer le modal (bouton Non)
+cancelActeCloseBtn.addEventListener('click', () => {
+    cancelActeModal.classList.add('hidden');
+    cancelActeModal.classList.remove('flex');
+    currentActeButton = null;
+});
+
+// Confirmer l'annulation (bouton Oui)
+confirmActeCancelBtn.addEventListener('click', () => {
+    if (currentActeButton) {
+        // Trouver l'élément parent à supprimer (carte ou ligne)
+        const card = currentActeButton.closest('.card-hover');
+        const row = currentActeButton.closest('tr');
+        
+        if (card) {
+            card.remove();
+        } else if (row) {
+            row.remove();
+        }
+        
+        alert('Acte annulé avec succès !');
+    }
+    cancelActeModal.classList.add('hidden');
+    cancelActeModal.classList.remove('flex');
+    currentActeButton = null;
+});
+
+// Fermer le modal en cliquant sur le fond sombre
+cancelActeModal.addEventListener('click', (e) => {
+    if (e.target === cancelActeModal) {
+        cancelActeModal.classList.add('hidden');
+        cancelActeModal.classList.remove('flex');
+        currentActeButton = null;
+    }
+});
+
+// Empêcher la propagation des clics depuis l'intérieur du modal
+document.querySelectorAll('.bg-white').forEach(element => {
+    element.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+});
+
+// --- GESTION DU MODAL DE REJET (si nécessaire) ---
+const rejectModal = document.getElementById('rejectConfirmModal');
+const cancelRejectBtn = document.getElementById('cancelRejectBtn');
+const confirmRejectBtn = document.getElementById('confirmRejectBtn');
+
+let currentRejectButton = null;
+
+function openRejectModal(button) {
+    currentRejectButton = button;
+    rejectModal.classList.remove('hidden');
+    rejectModal.classList.add('flex');
+}
+
+function closeRejectModal() {
+    rejectModal.classList.add('hidden');
+    rejectModal.classList.remove('flex');
+    currentRejectButton = null;
+}
+
+// Cibler tous les boutons "Rejeter" (s'il y en a)
+document.querySelectorAll('.reject-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openRejectModal(button);
+    });
+});
+
+cancelRejectBtn.addEventListener('click', closeRejectModal);
+
+confirmRejectBtn.addEventListener('click', () => {
+    if (currentRejectButton) {
+        const card = currentRejectButton.closest('.card-hover');
+        const row = currentRejectButton.closest('tr');
+        
+        if (card) {
+            card.remove();
+        } else if (row) {
+            row.remove();
+        }
+        
+        alert('Rendez-vous rejeté avec succès !');
+    }
+    closeRejectModal();
+});
+
+rejectModal.addEventListener('click', (e) => {
+    if (e.target === rejectModal) {
+        closeRejectModal();
+    }
+});
+
+// Ancien modal de confirmation (désactivé)
+const oldConfirmModal = document.getElementById('confirmCancelModal');
+if (oldConfirmModal) oldConfirmModal.style.display = 'none';
+    </script>
+
+</body>
+
+</html>
